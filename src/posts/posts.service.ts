@@ -42,6 +42,8 @@ export class PostsService {
     if (!post) {
       throw new NotFoundException(`Post with slug "${slug}" not found`);
     }
+    // post.views = post.views + 1;
+    // await this.postsRepository.save(post);
     return post;
   }
   // TODO: Implement findOneById, Update, Remove... methods
