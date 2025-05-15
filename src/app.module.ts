@@ -9,6 +9,7 @@ import { PostsModule } from './posts/posts.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      ignoreEnvFile: process.env.NODE_ENV === 'production',
       envFilePath: '.env',
     }),
     TypeOrmModule.forRootAsync({
