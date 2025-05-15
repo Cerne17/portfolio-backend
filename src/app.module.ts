@@ -19,13 +19,13 @@ import { Post } from './posts/post.entity';
         // --- DIAGNOSTIC LOGS ---
         console.log('[AppModule - TypeORM Config] Initializing TypeORM...');
         const nodeEnv = configService.get<string>('NODE_ENV');
-        const dbHost = configService.get<string>('DB_HOST');
-        const dbPort = configService.get<number>('DB_PORT');
-        const dbUsername = configService.get<string>('DB_USERNAME');
+        const dbHost = configService.get<string>('POSTGRES_HOST');
+        const dbPort = configService.get<number>('POSTGRES_PORT');
+        const dbUsername = configService.get<string>('POSTGRES_USERNAME');
         // It's generally not a good idea to log passwords, even masked, in production.
-        const dbPassword = configService.get<string>('DB_PASSWORD');
-        const dbName = configService.get<string>('DB_NAME');
-        const dbType = configService.get<string>('DB_TYPE');
+        const dbPassword = configService.get<string>('POSTGRES_PASSWORD');
+        const dbName = configService.get<string>('POSTGRES_NAME');
+        const dbType = configService.get<string>('POSTGRES_TYPE');
 
         console.log(`[AppModule - TypeORM Config] NODE_ENV: '${nodeEnv}'`);
         console.log(`[AppModule - TypeORM Config] DB_TYPE: '${dbType}'`);
@@ -52,7 +52,7 @@ import { Post } from './posts/post.entity';
           host: dbHost,
           port: dbPort || 5432, // Default to 5432 if not set
           username: dbUsername,
-          password: configService.get<string>('DB_PASSWORD'), // Get password directly here
+          password: configService.get<string>('POSTGRES_PASSWORD'), // Get password directly here
           database: dbName,
           // For serverless environments, explicitly importing entities is more robust
           entities: [Post],
