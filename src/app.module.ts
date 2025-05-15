@@ -28,22 +28,22 @@ import { Post } from './posts/post.entity';
         const dbType = configService.get<string>('POSTGRES_TYPE');
 
         console.log(`[AppModule - TypeORM Config] NODE_ENV: '${nodeEnv}'`);
-        console.log(`[AppModule - TypeORM Config] DB_TYPE: '${dbType}'`);
-        console.log(`[AppModule - TypeORM Config] DB_HOST: '${dbHost}'`);
-        console.log(`[AppModule - TypeORM Config] DB_PORT: '${dbPort}'`);
+        console.log(`[AppModule - TypeORM Config] POSTGRES_TYPE: '${dbType}'`);
+        console.log(`[AppModule - TypeORM Config] POSTGRES_HOST: '${dbHost}'`);
+        console.log(`[AppModule - TypeORM Config] POSTGRES_PORT: '${dbPort}'`);
         console.log(
-          `[AppModule - TypeORM Config] DB_USERNAME: '${dbUsername}'`,
+          `[AppModule - TypeORM Config] POSTGRES_USERNAME: '${dbUsername}'`,
         );
         console.log(
-          `[AppModule - TypeORM Config] DB_PASSWORD: '${dbPassword ? '********' : 'NOT SET'}'`,
+          `[AppModule - TypeORM Config] POSTGRES_PASSWORD: '${dbPassword ? dbPassword.slice(0, 4) : 'NOT SET'}'`,
         );
-        console.log(`[AppModule - TypeORM Config] DB_NAME: '${dbName}'`);
+        console.log(`[AppModule - TypeORM Config] POSTGRES_NAME: '${dbName}'`);
 
         if (!dbHost) {
           console.error(
-            '[AppModule - TypeORM Config] CRITICAL: DB_HOST is undefined or empty. Check Vercel environment variables and ConfigService setup.',
+            '[AppModule - TypeORM Config] CRITICAL: POSTGRES_HOST is undefined or empty. Check Vercel environment variables and ConfigService setup.',
           );
-          throw new Error('DB_HOST environment variable is not set.');
+          throw new Error('POSTGRES_HOST environment variable is not set.');
         }
         // --- END DIAGNOSTIC LOGS ---
 
