@@ -42,7 +42,7 @@ import { PostsModule } from './posts/posts.module';
       password: process.env.DB_PASSWORD || 'postgres',
       database: process.env.DB_NAME || 'postgres',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: process.env.NODE_ENV !== 'production',
+      synchronize: false,
       ssl:
         process.env.NODE_ENV === 'production'
           ? { rejectUnauthorized: false }
